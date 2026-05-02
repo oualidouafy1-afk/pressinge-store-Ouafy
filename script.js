@@ -2,18 +2,18 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
 /* عرض السلة */
-function renderCart(){
+function renderCart() {
     const list = document.getElementById("cartList");
     list.innerHTML = "";
     total = 0;
 
-    if(cart.length === 0){
+    if (cart.length === 0) {
         list.innerHTML = "<li>السلة فارغة</li>";
         document.getElementById("total").textContent = 0;
         return;
     }
 
-    cart.forEach((item,index)=>{
+    cart.forEach((item, index) => {
         total += item.price;
 
         const li = document.createElement("li");
@@ -29,22 +29,22 @@ function renderCart(){
 }
 
 /* إضافة للسلة */
-function addToCart(name,price){
-    cart.push({name,price});
+function addToCart(name, price) {
+    cart.push({name, price});
     showNotification("تمت إضافة المنتج ✅");
     renderCart();
 }
 
 /* حذف منتج */
-function removeItem(index){
-    cart.splice(index,1);
+function removeItem(index) {
+    cart.splice(index, 1);
     showNotification("تم حذف المنتج ❌");
     renderCart();
 }
 
 /* تأكيد الطلب */
-function confirmOrder(){
-    if(cart.length === 0){
+function confirmOrder() {
+    if (cart.length === 0) {
         alert("السلة فارغة ❗");
         return;
     }
@@ -56,7 +56,7 @@ function confirmOrder(){
 }
 
 /* إشعارات احترافية */
-function showNotification(message){
+function showNotification(message) {
     let notif = document.createElement("div");
     notif.textContent = message;
 
@@ -72,25 +72,25 @@ function showNotification(message){
 
     document.body.appendChild(notif);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         notif.remove();
-    },2000);
+    }, 2000);
 }
 
 /* طلب عبر واتساب */
-function orderWhatsApp(){
-    if(cart.length === 0){
+function orderWhatsApp() {
+    if (cart.length === 0) {
         alert("السلة فارغة ❗");
         return;
     }
 
     let message = "طلب جديد:%0A";
-    cart.forEach(item=>{
-        message += ${item.name} - ${item.price} درهم %0A;
+    cart.forEach(item => {
+        message += `${item.name} - ${item.price} درهم%0A`;
     });
-    message += المجموع: ${total} درهم;
+    message += `المجموع: ${total} درهم`;
 
-    window.open(https://wa.me/212680842460?text=${message},"_blank");
+    window.open(`https://wa.me/212680842460?text=${message}`, "_blank");
 }
 
 /* تحميل السلة عند فتح الموقع */
