@@ -1,156 +1,55 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر لوازم مغسلة الملابس - وليد وافي</title>
-<meta name="مشروعي الخاص" content="مرحبا بجميع الزوار في مشروعي المتواضع من تجل اقتناء الات التصبين او اي استفسار او اخد معلومات لانني اكسب خبرة كافية في مجال الات  التصبين  من النوع الكبير والصغير وفي الخير  اتمنى لكم يوم جميل وشكرا كان معكم صاحب المشروع وليد وافي">
-<link rel="stylesheet" href="style.css">
-
-    <style>
-
-body{
-    font-family: Tahoma, Arial, sans-serif;
-    margin:0;
-    background:#f4f6f9;
-}
-
-header{
-    background:#1d0c6d;
-    color:rgb(255, 255, 255);
-    padding:15px;
-    text-align:center;
-}
-
-.container{
-    width:90%;
-    max-width:1100px;
-    margin:30px auto;
-}
-
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    text-align:center;
-}
-
-.card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    border-radius:8px;
-}
-
-button{
-    background:#28a745;
-    color:white;
-    padding:10px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    background:#218838;
-    transform:scale(1.05);
-}
-
-.cart{
-    margin-top:40px;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.total{
-    font-weight:bold;
-    margin-top:10px;
-}
-
-footer{
-    text-align:center;
-    padding:15px;
-    margin-top:40px;
-    background:#100222;
-    color:rgb(255, 255, 255);
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر لوازم مغسلة الملابس - وليد وافي</title>
+    <meta name="description" content="مرحبا بجميع الزوار في مشروعي المتواضع لاقتناء الات التصبين او اي استفسار او اخد معلومات لانني اكسب خبرة كافية في مجال الات التصبين من النوع الكبير والصغير">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <header>
+        <h2>🧺 متجر لوازم مغسلة الملابس</h2>
+        <p>صاحب المشروع: <strong>وليد وافي</strong></p>
+    </header>
 
-<header>
-<h2>🧺 متجر لوازم مغسلة الملابس</h2>
-<p>صاحب المشروع: <strong>وليد وافي</strong></p>
-</header>
+    <div class="container">
+        <div class="products">
+            <div class="card">
+                <img src="https://arabic.autowashingmachine.com/photo/ps19576497-large_capacity_70kg_automatic_front_load_washer_industrial_washing_machine.jpg" alt="غسالة صناعية">
+                <h3>غسالة صناعية كبيرة</h3>
+                <p>السعر: 12000 درهم</p>
+                <button onclick="addToCart('غسالة صناعية كبيرة',12000)">إضافة للسلة</button>
+            </div>
 
-<div class="container">
+            <div class="card">
+                <img src="ouafy.jpeg" alt="غسالة عادية">
+                <h3>غسالة أوتوماتيكية</h3>
+                <p>السعر: 4500 درهم</p>
+                <button onclick="addToCart('غسالة أوتوماتيكية',4500)">إضافة للسلة</button>
+            </div>
 
-<div class="products">
+            <div class="card">
+                <img src="ouialid.png" alt="مسحوق غسيل">
+                <h3>مسحوق غسيل احترافي</h3>
+                <p>السعر: 300 درهم</p>
+                <button onclick="addToCart('مسحوق غسيل احترافي',300)">إضافة للسلة</button>
+            </div>
+        </div>
 
-<div class="card">
-<img src="https://arabic.autowashingmachine.com/photo/ps19576497-large_capacity_70kg_automatic_front_load_washer_industrial_washing_machine.jpg" alt="غسالة صناعية">
-<h3>غسالة صناعية كبيرة</h3>
-<p>السعر: 12000 درهم</p>
-<button onclick="addToCart('غسالة صناعية كبيرة',12000)">إضافة للسلة</button>
-</div>
+        <div class="cart">
+            <h3>🛒 سلة المشتريات</h3>
+            <ul id="cartList"></ul>
+            <p class="total">المجموع: <span id="total">0</span> درهم</p>
+            <button onclick="confirmOrder()">تأكيد الطلب</button>
+            <button onclick="orderWhatsApp()">طلب عبر واتساب</button>
+        </div>
+    </div>
 
-<div class="card">
-<img src="ouafy.jpeg" alt="غسالة عادية">
-<h3>غسالة أوتوماتيكية</h3>
-<p>السعر: 4500 درهم</p>
-<button onclick="addToCart('غسالة أوتوماتيكية',4500)">إضافة للسلة</button>
-</div>
+    <footer>
+        ©️ 2026 جميع الحقوق محفوظة - وليد وافي
+    </footer>
 
-<div class="card">
-<img src="ouialid.png" alt="مسحوق غسيل">
-<h3>مسحوق غسيل احترافي</h3>
-<p>السعر: 300 درهم</p>
-<button onclick="addToCart('مسحوق غسيل احترافي',300)">إضافة للسلة</button>
-</div>
-
-</div>
-
-<div class="cart">
-<h3>🛒 سلة المشتريات</h3>
-<ul id="cartList"></ul>
-<p class="total">المجموع: <span id="total">0</span> درهم</p>
-</div>
-
-</div>
-
-<footer>
-©️ 2026 جميع الحقوق محفوظة - وليد وافي
-</footer>
-
-<script>
-
-let total = 0;
-
-function addToCart(name,price){
-    const li = document.createElement("li");
-    li.textContent = name + " - " + price + " درهم";
-    document.getElementById("cartList").appendChild(li);
-
-    total += price;
-    document.getElementById("total").textContent = total;
-
-    alert("تمت إضافة المنتج إلى السلة ✅");
-}
-
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
