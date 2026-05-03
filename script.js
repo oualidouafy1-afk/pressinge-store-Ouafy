@@ -86,5 +86,4 @@ function orderWhatsApp() {
     window.open(`https://wa.me/212680842460?text=${message}`, "_blank");
 }
 
-/* تحميل السلة عند فتح الموقع */
 renderCart();
