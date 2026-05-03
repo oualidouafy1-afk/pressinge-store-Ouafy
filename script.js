@@ -1,7 +1,6 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 
-/* عرض السلة */
 function renderCart() {
     const list = document.getElementById("cartList");
     list.innerHTML = "";
@@ -28,21 +27,18 @@ function renderCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* إضافة للسلة */
 function addToCart(name, price) {
     cart.push({name, price});
     showNotification("تمت إضافة المنتج ✅");
     renderCart();
 }
 
-/* حذف منتج */
 function removeItem(index) {
     cart.splice(index, 1);
     showNotification("تم حذف المنتج ❌");
     renderCart();
 }
 
-/* تأكيد الطلب */
 function confirmOrder() {
     if (cart.length === 0) {
         alert("السلة فارغة ❗");
@@ -55,7 +51,6 @@ function confirmOrder() {
     renderCart();
 }
 
-/* إشعارات احترافية */
 function showNotification(message) {
     let notif = document.createElement("div");
     notif.textContent = message;
@@ -76,8 +71,6 @@ function showNotification(message) {
         notif.remove();
     }, 2000);
 }
-
-/* طلب عبر واتساب */
 function orderWhatsApp() {
     if (cart.length === 0) {
         alert("السلة فارغة ❗");
